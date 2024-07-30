@@ -31,9 +31,8 @@ class LinkShortner:
         return self.base_link + self.shorten_url(long_url)
     
     def get_long_url(self, key):
-        if key in self.db:
-            return self.db[key]
-        return "Not Found"
+        long_url = self.redis_client.get(key)
+        return long_url if long_url else "Not Found"
             
 
 
