@@ -22,6 +22,11 @@ Don't know about redis ??, check [Here !](https://redis.io)
 
 > 5. next is to copy .env.examples and edit it with your values. I used a redis cache, for fast retrival of the url.
 
+# Testing 
+
+![Link Shortener Service](assests/video.gif)
+
+
 
 
 
