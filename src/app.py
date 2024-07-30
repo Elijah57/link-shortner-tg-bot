@@ -25,7 +25,7 @@ def shorten_url():
 
 @app.route('/<key>')
 def redirect_url(key):
-    long_url = redis_client.get(key)
+    long_url = lk.get_long_url(key)
     if long_url:
         return redirect(long_url.decode("utf-8"))
     return 'URL not found', 404
