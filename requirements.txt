@@ -1,3 +1,4 @@
+ipinfo==5.0.1
 celery==5.4.0
 Flask==3.0.3
 python-dotenv==1.0.1
