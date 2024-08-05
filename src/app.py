@@ -1,8 +1,8 @@
 from flask import Flask, request, redirect, render_template, url_for
 from dotenv import load_dotenv
-from db.db import connect_redis
-from ip.ip_config import ip_info_init, get_geo_data
-from api.routes import api
+from src.db.db import connect_redis
+from src.ip.ip_config import ip_info_init, get_geo_data
+from src.api.routes import api
 
 import datetime
 import random
