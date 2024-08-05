@@ -1,12 +1,13 @@
-from flask import request, redirect, render_template
+from flask import request, redirect, render_template, Flask
 from linkshortener.link_shortner import LinkShortner
 from ip.ip_config import ip_info_init, get_geo_data
 from db.db import connect_redis
-from api.init import create_app
+from api.routes import api
 
 
 #initialize flask app
-app = create_app()
+app = Flask(__name__)
+app.register_blueprint(api, url_prefix='/api')
 
 #initialize redis cache
 redis_client = connect_redis()
