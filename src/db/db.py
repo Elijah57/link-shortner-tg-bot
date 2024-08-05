@@ -13,7 +13,7 @@ def connect_redis():
     try:
         redis_client = redis.StrictRedis(
             host= host,
-            port= port,
+            port= 6379,
             password= access_key,
             ssl= True
         )
