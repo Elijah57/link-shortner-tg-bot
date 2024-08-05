@@ -1,7 +1,7 @@
 from flask import Flask, request, redirect, jsonify, Blueprint
 from dotenv import load_dotenv
-from db.db import connect_redis
-from ip.ip_config import ip_info_init, get_geo_data
+from src.db.db import connect_redis
+from src.ip.ip_config import ip_info_init, get_geo_data
 import datetime
 import random
 import string
