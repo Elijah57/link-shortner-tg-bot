@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 host = os.getenv("HOST")
-port = os.getenv("PORT")
+# port = os.getenv("PORT")
 access_key = os.getenv("ACCESS_KEY")
 
 def connect_redis():
