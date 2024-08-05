@@ -44,7 +44,7 @@ def shorten_url():
 def redirect_url(key):
     long_url = redis_client.get(key)
 
-    ip_address = request.headers.get('X-Forwarded-For', request.remote_addr)
+    ip_address = request.remote_addr
     user_agent = request.headers.get("User-Agent")
     device = "mobile" if "Mobi" in user_agent else "desktop"
     timestamp = datetime.datetime.now()
