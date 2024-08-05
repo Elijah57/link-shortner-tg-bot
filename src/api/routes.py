@@ -1,9 +1,7 @@
-from flask import Flask, request, redirect, render_template, url_for
+from flask import Flask, request, redirect, jsonify, Blueprint
 from dotenv import load_dotenv
 from db.db import connect_redis
 from ip.ip_config import ip_info_init, get_geo_data
-from api.routes import api
-
 import datetime
 import random
 import string
@@ -15,8 +13,7 @@ key_length = int(os.getenv("KEY_LEN"))
 base_link = os.getenv("BASE_LINK")
 charset = string.ascii_letters + string.digits
 
-app = Flask(__name__)
-app.register_blueprint(api, url_prefix='/api')
+api = Blueprint("api", __name__)
 
 
 redis_client = connect_redis()
@@ -27,20 +24,17 @@ ip_handler = ip_info_init()
 def generate_key():
     return ''.join(random.choices(charset, k=key_length))
 
-@app.route("/")
-def index():
-    return render_template("index.html")
 
-@app.route('/shorten', methods=["GET",'POST'])
+@api.route('/shorten', methods=["GET",'POST'])
 def shorten_url():
-    long_url = request.form['url']
+    long_url = request.json['url']
     while True:
         key = generate_key()
         if not redis_client.exists(key):
             redis_client.set(key, long_url)
-            return render_template("index.html", short_url= f'{base_link}/{key}')
+            return jsonify({"short_url":f'{base_link}/{key}'}) 
 
-@app.route('/<key>')
+@api.route('/<key>')
 def redirect_url(key):
     long_url = redis_client.get(key)
 
@@ -55,5 +49,5 @@ def redirect_url(key):
         return redirect(long_url.decode("utf-8"))
     return 'URL not found', 404
 
-if __name__ == "__main__":
-    app.run(debug=True)
+
+
