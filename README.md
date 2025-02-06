@@ -1,10 +1,10 @@
 # link-shortner-tg-bot
 
-Out of boredom, and lack of motivation to proceed with my ongoing project [SmartLearn](https://github.com/Elijah57/Smart-Learn ), i decided to create a telegram bot, that runs a Flask app to shorten url link. Mostly, i view the Telegram platform as a lair to build bots  that automate certain tasks for me.
+Out of boredom and a lack of motivation to proceed with my ongoing project, SmartLearn, I decided to create a Telegram bot that runs a Flask app to shorten URL links. I mostly view the Telegram platform as a place to build bots that automate certain tasks for me.
 
-To buld this, i need a database to store, the long urls (value) and lookups for the urls (key), also i needed the database to have fast retreival and low latency, for a better user experience. (Although, in my wildest expectation, this would be used as an API, so only developers would use it). Redis Cache, fit well for this application.
+To build this, I needed a database to store the long URLs (values) and lookups for the URLs (keys). I also wanted the database to have fast retrieval and low latency for a better user experience. Although, in my wildest expectations, this would be used as an API, so only developers would use it, Redis Cache fits well for this application.
 
-Don't know about redis ??, check [Here !](https://redis.io)
+Don’t know about Redis??, check [Here !](https://redis.io)
 
 # How to replicate
 
